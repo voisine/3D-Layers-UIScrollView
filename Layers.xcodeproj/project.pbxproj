@@ -151,7 +151,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Layers" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -194,7 +198,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joe Ricioppo";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -202,7 +206,8 @@
 				GCC_PREFIX_HEADER = Layers_Prefix.pch;
 				INFOPLIST_FILE = "Layers-Info.plist";
 				PRODUCT_NAME = Layers;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "512B2F24-A68C-4605-9A5B-DFC94339B4B9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -215,6 +220,7 @@
 				GCC_PREFIX_HEADER = Layers_Prefix.pch;
 				INFOPLIST_FILE = "Layers-Info.plist";
 				PRODUCT_NAME = Layers;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

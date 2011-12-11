@@ -10,14 +10,15 @@
 
 @implementation AITransformView
 
-@synthesize trackball;
+@synthesize trackball, rootLayer;
 
 #pragma mark -
 #pragma mark Definitions
 
-#define Border_Width 3.0;
-#define Corner_Radius 75.0;
+#define Border_Width 3.0
+#define Corner_Radius 75.0
 #define Layer_Size 150.0
+#define Corner_Distance 25.0
 
 
 #pragma mark -
@@ -30,11 +31,20 @@ CGFloat DegreesToRadians(CGFloat degrees)
 #pragma mark -
 #pragma mark Setup
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        //		self.multipleTouchEnabled = YES;
+        [self setupLayers];		
+		//self.backgroundColor = [UIColor blackColor];
+    }
+    return self;    
+}
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 //		self.multipleTouchEnabled = YES;
         [self setupLayers];		
-		self.backgroundColor = [UIColor blackColor];
+		//self.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
@@ -47,7 +57,8 @@ CGFloat DegreesToRadians(CGFloat degrees)
 	[self.layer addSublayer:rootLayer];
 	
 	CGFloat layerSize = Layer_Size;
-	CGRect layerRect = CGRectMake(0.0, 0.0, layerSize, layerSize);
+	CGRect layerRect = CGRectMake(Corner_Distance, Corner_Distance, layerSize - Corner_Distance, 
+                                  layerSize - Corner_Distance);
 	
 	
 	//Side One_Front_Blue
