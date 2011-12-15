@@ -10,14 +10,16 @@
 
 @implementation AITransformView
 
-@synthesize trackball, rootLayer;
+@synthesize rootLayer;
 
 #pragma mark -
 #pragma mark Definitions
 
 #define Border_Width 3.0
-#define Corner_Radius 75.0
+//#define Corner_Radius 75.0
+#define Corner_Radius 100.0
 #define Layer_Size 150.0
+//#define Corner_Distance 0.0
 #define Corner_Distance 25.0
 
 
@@ -157,32 +159,6 @@ CGFloat DegreesToRadians(CGFloat degrees)
 	transformLayer.anchorPointZ = Layer_Size/-2;
 		
 	[rootLayer addSublayer:transformLayer];
-}
-
-
-#pragma mark -
-#pragma mark Touch Handling
-
-
-//Trackball Version by Bill Dudney
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	if(nil == self.trackball) {
-		self.trackball = [Trackball trackBallWithLocation:location inRect:self.bounds];
-	} else {
-		[self.trackball setStartPointFromLocation:location];
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	CATransform3D transform = [trackball rotationTransformForLocation:location];
-	rootLayer.sublayerTransform = transform;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	[self.trackball finalizeTrackBallForLocation:location];
 }
 
 

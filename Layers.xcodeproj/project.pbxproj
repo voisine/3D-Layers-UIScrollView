@@ -18,7 +18,6 @@
 		5236B098104C59C700F95A53 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5236B097104C59C700F95A53 /* icon.png */; };
 		529903480F7FCC9D004ECB01 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529903470F7FCC9D004ECB01 /* QuartzCore.framework */; };
 		5299041B0F806EC4004ECB01 /* AITransformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5299041A0F806EC4004ECB01 /* AITransformView.m */; };
-		52B3E1590F82A1D30097C68E /* Trackball.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B3E1570F82A1D30097C68E /* Trackball.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,6 @@
 		529903470F7FCC9D004ECB01 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		529904190F806EC4004ECB01 /* AITransformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITransformView.h; sourceTree = "<group>"; };
 		5299041A0F806EC4004ECB01 /* AITransformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITransformView.m; sourceTree = "<group>"; };
-		52B3E1570F82A1D30097C68E /* Trackball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trackball.m; sourceTree = "<group>"; };
-		52B3E1580F82A1D30097C68E /* Trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trackball.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Layers-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Layers-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +64,6 @@
 				28D7ACF70DDB3853001CB0EB /* LayersViewController.m */,
 				529904190F806EC4004ECB01 /* AITransformView.h */,
 				5299041A0F806EC4004ECB01 /* AITransformView.m */,
-				52B3E1580F82A1D30097C68E /* Trackball.h */,
-				52B3E1570F82A1D30097C68E /* Trackball.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -187,7 +182,6 @@
 				1D3623260D0F684500981E51 /* LayersAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* LayersViewController.m in Sources */,
 				5299041B0F806EC4004ECB01 /* AITransformView.m in Sources */,
-				52B3E1590F82A1D30097C68E /* Trackball.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,20 +24,15 @@
 */
 
 
-//- (void)loadView {
-//	transformView = [[AITransformView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-//	self.view = transformView;
-//}
-
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    
-    scroller.contentSize = CGSizeMake(self.view.frame.size.height*2, self.view.frame.size.width*2);
-//    scroller.contentOffset = CGPointMake(1000000.0/2, 1000000.0/2);
+
+    scroller.scrollsToTop = NO;    
+    scroller.contentSize = CGSizeMake(1000000.0, 1000000.0);
+    scroller.contentOffset = CGPointMake(1000000.0/2, 1000000.0/2);
+    transformView.rootLayer.speed = 100.0;
 }
 
 
@@ -49,56 +44,18 @@
 }
 */
 
-/*
-//Trackball Version by Bill Dudney
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	if(nil == self.trackball) {
-		self.trackball = [Trackball trackBallWithLocation:location inRect:self.bounds];
-	} else {
-		[self.trackball setStartPointFromLocation:location];
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	CATransform3D transform = [trackball rotationTransformForLocation:location];
-	rootLayer.sublayerTransform = transform;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint location = [[touches anyObject] locationInView:self];
-	[self.trackball finalizeTrackBallForLocation:location];
-}
-*/
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-	if(nil == transformView.trackball) {
-		transformView.trackball = [Trackball trackBallWithLocation:scrollView.contentOffset inRect:transformView.bounds];
-	} else {
-		[transformView.trackball setStartPointFromLocation:scrollView.contentOffset];
-	}
-    tracking = YES;
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (! decelerate) [self scrollViewDidEndDecelerating:scrollView];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    tracking = NO;
-	[transformView.trackball finalizeTrackBallForLocation:scrollView.contentOffset];
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (! tracking) return;
+    static CGFloat lastX = 0, lastY = 0;
     
-	CATransform3D transform = [transformView.trackball rotationTransformForLocation:scrollView.contentOffset];
-	transformView.rootLayer.sublayerTransform = transform;
+    CATransform3D yRotate = CATransform3DMakeRotation((scrollView.contentOffset.y - lastY)/100, 1.0, 0.0, 0.0);
+    CATransform3D xRotate = CATransform3DMakeRotation(-(scrollView.contentOffset.x - lastX)/100, 0.0, 1.0, 0.0);
+    CATransform3D rotate = CATransform3DConcat(xRotate, yRotate);
+    
+    transformView.rootLayer.sublayerTransform = CATransform3DConcat(transformView.rootLayer.sublayerTransform, rotate);
+    
+    lastX = scrollView.contentOffset.x;
+    lastY = scrollView.contentOffset.y;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,11 +15,9 @@
 	
 	CALayer						*rootLayer;
 	CATransformLayer		*transformLayer;
-	Trackball						*trackball;
 
 }
 
-@property(nonatomic, retain) Trackball *trackball;
 @property(nonatomic, retain) CALayer *rootLayer;
 
 - (void)setupLayers;

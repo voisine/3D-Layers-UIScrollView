@@ -13,8 +13,6 @@
 @interface LayersViewController : UIViewController <UIScrollViewDelegate> {
 	IBOutlet AITransformView *transformView;
     IBOutlet UIScrollView *scroller;
-    
-    BOOL tracking;
 }
 
 @end
